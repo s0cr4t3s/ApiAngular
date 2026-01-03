@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/SolutionItems/">
+    <File Path=".editorconfig" />
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="onboardingtesterhelper.client/onboardingtesterhelper.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="OnBoardingTesterHelper.Server/OnBoardingTesterHelper.Server.csproj" />
+</Solution>

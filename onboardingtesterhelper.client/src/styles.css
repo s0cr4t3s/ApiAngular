@@ -11,9 +11,13 @@ html, body {
 }
 
 /* 1. Header Toggle & Icons Hover (Circular effect) */
-.header-icon-btn:hover {
+.menu-toggle-btn:hover {
 	background: rgba(255, 255, 255, 0.1) !important;
 	border-radius: 50%;
+}
+
+.p-menu-item-content:hover {
+	background: rgba(255, 255, 255, 0.1) !important;
 }
 
 /* 2. FORCE DARK SIDEBAR MENU */
@@ -51,3 +55,4 @@ aside .p-menuitem-link.active-route .p-menuitem-text,
 aside .p-menuitem-link.active-route .p-menuitem-icon {
 	color: #34d399 !important;
 }
+

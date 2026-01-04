@@ -1,29 +1,48 @@
-<div class="min-h-screen flex relative lg:static surface-ground">
-	<app-sidebar [class.hidden]="!sidebarActive()"
-				 class="h-full lg:h-auto shadow-2 border-right-1 surface-border w-20rem z-5 absolute lg:relative">
-	</app-sidebar>
+<div class="flex flex-column h-screen overflow-hidden">
+	<header class="h-3rem surface-900 text-0 shadow-2 flex align-items-center justify-content-between px-5 z-10">
+		<div class="flex align-items-center">
+			<p-button icon="pi pi-bars" [text]="true" (onClick)="toggleMenu()" styleClass="text-0 menu-toggle-btn" class="mr-3"></p-button>
 
-	<div class="flex flex-column flex-grow-1 w-full">
-		<header class="h-5rem surface-section shadow-1 flex align-items-center justify-content-between px-5">
-			<div class="flex align-items-center gap-4">
-				<p-button icon="pi pi-bars" [text]="true" (onClick)="toggleMenu()"></p-button>
-				<p-breadcrumb [model]="breadcrumbItems()" [home]="{ icon: 'pi pi-home', routerLink: '/' }"></p-breadcrumb>
+			<div class="flex align-items-center gap-2 mr-4 cursor-pointer">
+				<i class="pi pi-prime text-primary text-4xl"></i>
+				<span class="text-xl font-bold uppercase tracking-wide">OnBoarding</span>
 			</div>
 
-			<div class="flex align-items-center gap-3">
-				<i class="pi pi-search text-xl text-400"></i>
-				<i class="pi pi-bell text-xl text-400" pBadge value="3"></i>
-				<p-avatar label="AE"
-						  shape="circle"
-						  styleClass="bg-primary text-white cursor-pointer"
-						  (click)="userMenu.toggle($event)">
-				</p-avatar>
-				<p-menu #userMenu [model]="userMenuItems" [popup]="true"></p-menu>
-			</div>
-		</header>
+			<p-breadcrumb [model]="breadcrumbItems()"
+						  [home]="{ icon: 'pi pi-home', routerLink: '/' }"
+						  styleClass="bg-transparent border-none p-0 text-0">
+			</p-breadcrumb>
+		</div>
 
-		<main class="p-5 flex-grow-1 overflow-auto">
-			<router-outlet></router-outlet>
+		<div class="flex align-items-center gap-4">
+			<i class="pi pi-bell text-xl text-0 p-overlay-badge cursor-pointer mr-2">
+				<p-badge value="3" severity="danger"></p-badge>
+			</i>
+
+			<div class="flex align-items-center gap-3 cursor-pointer p-2 border-round hover:surface-800 transition-colors" (click)="userMenu.toggle($event)">
+				<p-avatar label="AE" shape="circle" styleClass="bg-primary text-white shadow-2"></p-avatar>
+				<div class="flex flex-column">
+					<span class="font-bold text-sm text-0 line-height-1">Amy Elsner</span>
+					<span class="text-xs text-400 mt-1">Webmaster</span>
+				</div>
+			</div>
+			<p-menu #userMenu [model]="userMenuItems" [popup]="true"></p-menu>
+		</div>
+	</header>
+
+	<div class="flex flex-grow-1 overflow-hidden">
+		<aside class="h-full surface-900 shadow-2 transition-all transition-duration-300 z-5 overflow-hidden"
+			   [style.width]="sidebarActive() ? '20rem' : '0'"
+			   [style.opacity]="sidebarActive() ? '1' : '0'">
+			<div class="w-20rem p-3">
+				<app-sidebar></app-sidebar>
+			</div>
+		</aside>
+
+		<main class="flex-grow-1 overflow-auto p-4 surface-ground">
+			<div class="p-4 border-round-xl shadow-1 surface-card min-h-full">
+				<router-outlet></router-outlet>
+			</div>
 		</main>
 	</div>
 </div>

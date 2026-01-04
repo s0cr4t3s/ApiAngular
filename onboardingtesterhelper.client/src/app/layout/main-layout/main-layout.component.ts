@@ -16,7 +16,7 @@ import { BadgeModule } from 'primeng/badge';
 	standalone: true,
 	imports: [RouterOutlet, SidebarComponent, ToastModule, ConfirmDialogModule, BreadcrumbModule, ButtonModule, BadgeModule, AvatarModule, MenuModule],
 	templateUrl: './main-layout.component.html', // Pointing to the external file
-	//styleUrls: ['./main-layout.component.css']    // Pointing to the external CSS
+	styleUrls: ['./main-layout.component.css']    // Pointing to the external CSS
 })
 export class MainLayoutComponent implements OnInit {
 	private router = inject(Router);
@@ -35,12 +35,14 @@ export class MainLayoutComponent implements OnInit {
 	];
 
 	ngOnInit() {
-		// Listen for route changes
+		// 1. Build the breadcrumb for the CURRENT route immediately on load
+		this.breadcrumbItems.set(this.createBreadcrumbs(this.activatedRoute.root));
+
+		// 2. Then listen for any FUTURE route changes
 		this.router.events.pipe(
 			filter(event => event instanceof NavigationEnd)
 		).subscribe(() => {
-			const root = this.activatedRoute.root;
-			this.breadcrumbItems.set(this.createBreadcrumbs(root));
+			this.breadcrumbItems.set(this.createBreadcrumbs(this.activatedRoute.root));
 		});
 	}
 

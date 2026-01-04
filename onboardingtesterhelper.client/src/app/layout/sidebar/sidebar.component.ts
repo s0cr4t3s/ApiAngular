@@ -1,12 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { PanelMenuModule } from 'primeng/panelmenu';
+import { MenuModule } from 'primeng/menu';
 import { NavService } from '../services/nav.service';
 import { AvatarModule } from 'primeng/avatar';
 
 @Component({
 	selector: 'app-sidebar',
 	standalone: true,
-	imports: [PanelMenuModule, AvatarModule],
+	imports: [MenuModule, AvatarModule],
 	templateUrl: './sidebar.component.html'
 })
 export class SidebarComponent implements OnInit {

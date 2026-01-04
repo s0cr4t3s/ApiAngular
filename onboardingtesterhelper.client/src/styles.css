@@ -1,4 +1,4 @@
-/* We remove the theme imports because we use the Aura preset in app.config.ts */
+/* Core Imports */
 @import "primeicons/primeicons.css";
 @import "primeflex/primeflex.css";
 
@@ -6,14 +6,48 @@ html, body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	font-family: var(--font-family); /* PrimeNG uses CSS variables for fonts */
+	font-family: var(--font-family);
+	background-color: var(--surface-ground);
 }
 
-/* Custom styling for the Sidebar */
-.w-15rem {
-	width: 15rem;
+/* 1. Header Toggle & Icons Hover (Circular effect) */
+.header-icon-btn:hover {
+	background: rgba(255, 255, 255, 0.1) !important;
+	border-radius: 50%;
 }
 
-.h-full {
-	height: 100%;
+/* 2. FORCE DARK SIDEBAR MENU */
+aside .p-menu,
+aside .p-menuitem-link {
+	background: transparent !important;
+	border: none !important;
+}
+
+aside .p-menu-item {
+	margin-left: 20px;
+}
+
+/* 3. VIBRANT WHITE TEXT & ICONS (Menu & Breadcrumb) */
+/* This ensures icons and text are #ffffff instead of muted gray [cite: 2025-12-18] */
+aside .p-menu-submenu-label,
+aside .p-menu-item-icon,
+aside .p-menu-item-label,
+header .p-breadcrumb-item,
+header .p-breadcrumb-item-label,
+header .p-breadcrumb .pi {
+	color: #ffffff !important;
+}
+
+/* 4. MENU HOVER (Matching Avatar style) */
+/* Uses a subtle white-alpha background and rounded corners [cite: 2025-10-10] */
+aside .p-menuitem-link:hover {
+	background: rgba(255, 255, 255, 0.1) !important;
+	border-radius: 8px; /* Matches the 'rounded' feel of the dashboard [cite: 2025-12-18] */
+	transition: background-color 0.2s;
+}
+
+/* Active State (Optional: keep the green indicator if you like it) */
+aside .p-menuitem-link.active-route .p-menuitem-text,
+aside .p-menuitem-link.active-route .p-menuitem-icon {
+	color: #34d399 !important;
 }

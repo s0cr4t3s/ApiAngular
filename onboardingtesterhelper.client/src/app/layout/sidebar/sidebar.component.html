@@ -1,13 +1,1 @@
-<div class="sidebar-wrapper h-full flex flex-column surface-section border-right-1 surface-border">
-    <div class="user-section p-4 flex align-items-center gap-3 border-bottom-1 surface-border">
-        <p-avatar label="AE" shape="circle" size="large"></p-avatar>
-        <div class="flex flex-column">
-            <span class="font-bold">Amy Elsner</span>
-            <span class="text-sm text-color-secondary">Webmaster</span>
-        </div>
-    </div>
-
-    <div class="menu-section flex-grow-1 overflow-y-auto">
-        <p-panelMenu [model]="navService.menuItems()" [multiple]="false"></p-panelMenu>
-    </div>
-</div>
+<p-menu [model]="navService.menuItems()"></p-menu>

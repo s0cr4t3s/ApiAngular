@@ -1,13 +1,5 @@
 @if (auth.isInitialCheckDone()) {
-<app-navbar></app-navbar>
-
-<main style="padding: 20px;">
-	<router-outlet></router-outlet>
-</main>
-
-<footer style="border-top: 1px solid #ccc; margin-top: 20px; padding: 10px;">
-	<p>&copy; 2026 - Sistema de Onboarding</p>
-</footer>
+<router-outlet></router-outlet>
 } @else {
 <div class="loading-overlay">
 	<p>Carregando sistema...</p>

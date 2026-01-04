@@ -1,0 +1,31 @@
+<div class="min-h-screen flex relative lg:static surface-ground">
+	<app-sidebar [class.hidden]="!sidebarActive()"
+				 class="h-full lg:h-auto shadow-2 border-right-1 surface-border w-20rem z-5 absolute lg:relative">
+	</app-sidebar>
+
+	<div class="flex flex-column flex-grow-1 w-full">
+		<header class="h-5rem surface-section shadow-1 flex align-items-center justify-content-between px-5">
+			<div class="flex align-items-center gap-4">
+				<p-button icon="pi pi-bars" [text]="true" (onClick)="toggleMenu()"></p-button>
+				<p-breadcrumb [model]="breadcrumbItems()" [home]="{ icon: 'pi pi-home', routerLink: '/' }"></p-breadcrumb>
+			</div>
+
+			<div class="flex align-items-center gap-3">
+				<i class="pi pi-search text-xl text-400"></i>
+				<i class="pi pi-bell text-xl text-400" pBadge value="3"></i>
+				<p-avatar label="AE"
+						  shape="circle"
+						  styleClass="bg-primary text-white cursor-pointer"
+						  (click)="userMenu.toggle($event)">
+				</p-avatar>
+				<p-menu #userMenu [model]="userMenuItems" [popup]="true"></p-menu>
+			</div>
+		</header>
+
+		<main class="p-5 flex-grow-1 overflow-auto">
+			<router-outlet></router-outlet>
+		</main>
+	</div>
+</div>
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>

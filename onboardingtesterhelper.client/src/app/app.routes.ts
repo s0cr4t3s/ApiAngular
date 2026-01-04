@@ -1,19 +1,28 @@
 import { Routes } from '@angular/router';
-import { WeatherComponent } from './weather/weather.component';
 import { LoginComponent } from './components/login/login.component';
 import { authGuard } from './guards/auth.guard';
+import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 
 export const routes: Routes = [
 	// Public Routes
 	{ path: 'login', component: LoginComponent },
 
-	// Private Routes (Grouped)
+	// Private Routes (Inside the Main Layout)
 	{
 		path: '',
+		component: MainLayoutComponent,
 		canActivate: [authGuard],
 		children: [
-			{ path: 'dashboard', component: WeatherComponent },
-			{ path: 'abc', component: WeatherComponent },
+			{
+				path: 'dashboard',
+				loadComponent: () => import('./weather/weather.component').then(m => m.WeatherComponent),
+				data: { breadcrumb: 'Dashboard' } // Label for breadcrumb
+			},
+			{
+				path: 'abc',
+				loadComponent: () => import('./weather/weather.component').then(m => m.WeatherComponent),
+				data: { breadcrumb: 'Weather' }
+			},
 			{ path: '', redirectTo: 'dashboard', pathMatch: 'full' }
 		]
 	},

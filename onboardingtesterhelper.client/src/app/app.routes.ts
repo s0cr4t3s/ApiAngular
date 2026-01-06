@@ -15,12 +15,12 @@ export const routes: Routes = [
 		children: [
 			{
 				path: 'dashboard',
-				loadComponent: () => import('./weather/weather.component').then(m => m.WeatherComponent),
+				loadComponent: () => import('./components/weather/weather').then(m => m.WeatherComponent),
 				data: { breadcrumb: 'Dashboard' } // Label for breadcrumb
 			},
 			{
 				path: 'abc',
-				loadComponent: () => import('./weather/weather.component').then(m => m.WeatherComponent),
+				loadComponent: () => import('./components/weather/weather').then(m => m.WeatherComponent),
 				data: { breadcrumb: 'Weather' }
 			},
 			{ path: '', redirectTo: 'dashboard', pathMatch: 'full' }

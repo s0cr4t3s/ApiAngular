@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { WeatherComponent } from './weather.component';
+import { WeatherComponent } from './weather';
 import { WeatherService } from './weather.service';
 import { of, throwError } from 'rxjs';
 

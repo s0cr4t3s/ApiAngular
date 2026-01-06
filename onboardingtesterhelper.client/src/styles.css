@@ -11,48 +11,44 @@ html, body {
 }
 
 /* 1. Header Toggle & Icons Hover (Circular effect) */
-.menu-toggle-btn:hover {
+header .menu-toggle-btn:hover {
 	background: rgba(255, 255, 255, 0.1) !important;
 	border-radius: 50%;
 }
 
-.p-menu-item-content:hover {
+header .p-breadcrumb-item,
+header .p-breadcrumb-item-label,
+header .p-breadcrumb .pi,
+.menu-sidebar aside .p-menu-submenu-label,
+.menu-sidebar aside .p-menu-item-icon,
+.menu-sidebar aside .p-menu-item-label {
+	color: #ffffff !important;
+}
+
+.menu-sidebar aside .p-menu-item-content:hover {
 	background: rgba(255, 255, 255, 0.1) !important;
 }
 
 /* 2. FORCE DARK SIDEBAR MENU */
-aside .p-menu,
-aside .p-menuitem-link {
+.menu-sidebar aside .p-menu,
+.menu-sidebar aside .p-menuitem-link {
 	background: transparent !important;
 	border: none !important;
 }
 
-aside .p-menu-item {
+.menu-sidebar aside .p-menu-item {
 	margin-left: 20px;
 }
 
-/* 3. VIBRANT WHITE TEXT & ICONS (Menu & Breadcrumb) */
-/* This ensures icons and text are #ffffff instead of muted gray [cite: 2025-12-18] */
-aside .p-menu-submenu-label,
-aside .p-menu-item-icon,
-aside .p-menu-item-label,
-header .p-breadcrumb-item,
-header .p-breadcrumb-item-label,
-header .p-breadcrumb .pi {
-	color: #ffffff !important;
-}
-
-/* 4. MENU HOVER (Matching Avatar style) */
-/* Uses a subtle white-alpha background and rounded corners [cite: 2025-10-10] */
-aside .p-menuitem-link:hover {
+.menu-sidebar aside .p-menuitem-link:hover {
 	background: rgba(255, 255, 255, 0.1) !important;
 	border-radius: 8px; /* Matches the 'rounded' feel of the dashboard [cite: 2025-12-18] */
 	transition: background-color 0.2s;
 }
 
 /* Active State (Optional: keep the green indicator if you like it) */
-aside .p-menuitem-link.active-route .p-menuitem-text,
-aside .p-menuitem-link.active-route .p-menuitem-icon {
+.menu-sidebar aside .p-menuitem-link.active-route .p-menuitem-text,
+.menu-sidebar aside .p-menuitem-link.active-route .p-menuitem-icon {
 	color: #34d399 !important;
 }
 

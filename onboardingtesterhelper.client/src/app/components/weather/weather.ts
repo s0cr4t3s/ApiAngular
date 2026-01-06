@@ -8,8 +8,8 @@ import { WeatherService, WeatherForecast } from './weather.service'; // Importe 
 	selector: 'weather-component',
 	standalone: true,
 	imports: [DatePipe], // Como usamos @if/@for no HTML, não precisamos de CommonModule aqui
-	templateUrl: './weather.component.html',
-	styleUrls: ['./weather.component.css']
+	templateUrl: './weather.html',
+	styleUrls: ['./weather.css']
 })
 export class WeatherComponent implements OnInit {
 	title = 'Weather';

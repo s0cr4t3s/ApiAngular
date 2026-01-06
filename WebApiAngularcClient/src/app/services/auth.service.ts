@@ -38,6 +38,14 @@ export class AuthService {
 		);
 	}
 
+	logout() {
+		// 1. Tell the server to clear the cookie
+		this.http.post('/api/auth/logout', {}).subscribe({
+			next: () => this.clearSession(false),
+			error: () => this.clearSession(false) // Clear local state even if server fails
+		});
+	}
+
 	checkAuthStatus() {
 		// This hits your [Authorize] GetCurrentUser() method in .NET 10
 		return this.http.get('/api/auth/current-user').pipe(
@@ -46,14 +54,6 @@ export class AuthService {
 				this.isAuthenticated.set(true);
 			})
 		);
-	}
-
-	logout() {
-		// 1. Tell the server to clear the cookie
-		this.http.post('/api/auth/logout', {}).subscribe({
-			next: () => this.clearSession(false),
-			error: () => this.clearSession(false) // Clear local state even if server fails
-		});
 	}
 
 	clearSession(saveReturnUrl: boolean = true) {

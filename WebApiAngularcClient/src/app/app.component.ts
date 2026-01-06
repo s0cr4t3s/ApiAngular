@@ -1,11 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AuthService } from './services/auth.service';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @Component({
 	selector: 'app-root',
 	standalone: true,
-	imports: [RouterOutlet], // Importante para navegação
+	imports: [RouterOutlet, ToastModule, ConfirmDialogModule], // Importante para navegação
 	templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {

@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MenuModule } from 'primeng/menu';
-import { NavService } from '../services/nav.service';
+import { NavService } from '../services/layout.service';
 import { AvatarModule } from 'primeng/avatar';
 
 @Component({

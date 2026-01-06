@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace OnBoardingTesterHelper.Server.Controllers
+using WebApiAngular.Server;
+
+namespace WebApiAngular.Server.Controllers
 {
 	[Authorize]
 	[ApiController]

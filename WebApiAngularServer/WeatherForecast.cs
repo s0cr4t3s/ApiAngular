@@ -1,4 +1,4 @@
-namespace OnBoardingTesterHelper.Server
+namespace WebApiAngular.Server
 {
     public class WeatherForecast
     {

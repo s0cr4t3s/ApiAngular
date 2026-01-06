@@ -4,13 +4,13 @@
 		<TargetFramework>net10.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<SpaRoot>..\onboardingtesterhelper.client</SpaRoot>
+		<SpaRoot>..\WebApiAngular.Client</SpaRoot>
 		<SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
 		<SpaProxyServerUrl>https://localhost:60365</SpaProxyServerUrl>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\onboardingtesterhelper.client\WebApiAngular.Client.esproj">
+		<ProjectReference Include="..\WebApiAngular.Client\WebApiAngular.Client.esproj">
 			<ReferenceOutputAssembly>false</ReferenceOutputAssembly>
 		</ProjectReference>
 	</ItemGroup>
@@ -36,7 +36,7 @@
 
 	<Target Name="GenerateAngularClient" AfterTargets="GenerateOpenApiDocuments" Condition="'$(Configuration)' == 'Debug'">
 		<PropertyGroup>
-			<ClientModelPath>$(MSBuildProjectDirectory)\..\onboardingtesterhelper.client\src\app\api-generator</ClientModelPath>
+			<ClientModelPath>$(MSBuildProjectDirectory)\..\WebApiAngular.Client\src\app\api-generator</ClientModelPath>
 			<GeneratorJar>$(MSBuildProjectDirectory)\..\tools\openapi-generator-cli-7.18.0.jar</GeneratorJar>
 			<JavaExe>C:\Program Files\Java\jdk-25\bin\java.exe</JavaExe>
 		</PropertyGroup>

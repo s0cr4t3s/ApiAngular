@@ -3,7 +3,7 @@
 	"version": 1,
 	"newProjectRoot": "projects",
 	"projects": {
-		"onboardingtesterhelper.client": {
+		"WebApiAngular.Client": {
 			"projectType": "application",
 			"schematics": {
 				"@schematics/angular:component": {
@@ -23,7 +23,7 @@
 				"build": {
 					"builder": "@angular-devkit/build-angular:application",
 					"options": {
-						"outputPath": "dist/onboardingtesterhelper.client",
+						"outputPath": "dist/WebApiAngular.Client",
 						"index": "src/index.html",
 						"browser": "src/main.ts",
 						"polyfills": [
@@ -71,10 +71,10 @@
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "onboardingtesterhelper.client:build:production"
+							"buildTarget": "WebApiAngular.Client:build:production"
 						},
 						"development": {
-							"buildTarget": "onboardingtesterhelper.client:build:development"
+							"buildTarget": "WebApiAngular.Client:build:development"
 						}
 					},
 					"defaultConfiguration": "development",

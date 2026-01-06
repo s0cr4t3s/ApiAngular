@@ -5,9 +5,9 @@
     <File Path=".gitignore" />
     <File Path="README.md" />
   </Folder>
-  <Project Path="onboardingtesterhelper.client/WebApiAngular.Client.esproj">
+  <Project Path="WebApiAngularcClient/WebApiAngular.Client.esproj">
     <Build />
     <Deploy />
   </Project>
-  <Project Path="OnBoardingTesterHelper.Server/WebApiAngular.Server.csproj" />
+  <Project Path="WebApiAngularServer/WebApiAngular.Server.csproj" />
 </Solution>

@@ -3,7 +3,6 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 // PrimeNG Imports
 import { MessageService, ConfirmationService } from 'primeng/api';
@@ -30,7 +29,6 @@ export const appConfig: ApplicationConfig = {
 			return auth.initAuth();
 		}),
 		{ provide: LOCALE_ID, useValue: 'pt-PT' },
-		provideAnimationsAsync(),
 
 		// --- PrimeNG Specifics ---
 		providePrimeNG({

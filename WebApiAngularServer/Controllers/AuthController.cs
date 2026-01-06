@@ -1,4 +1,4 @@
-namespace OnBoardingTesterHelper.Server.Controllers
+namespace WebApiAngular.Server.Controllers
 {
 	using System.IdentityModel.Tokens.Jwt;
 	using System.Security.Claims;

@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.1",
   "info": {
-    "title": "OnBoardingTesterHelper.Server | v1",
+    "title": "WebApiAngular.Server | v1",
     "version": "1.0.0"
   },
   "paths": {

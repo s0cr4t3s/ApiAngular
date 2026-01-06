@@ -10,7 +10,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\onboardingtesterhelper.client\onboardingtesterhelper.client.esproj">
+		<ProjectReference Include="..\onboardingtesterhelper.client\WebApiAngular.Client.esproj">
 			<ReferenceOutputAssembly>false</ReferenceOutputAssembly>
 		</ProjectReference>
 	</ItemGroup>
@@ -44,7 +44,7 @@
 		<Exec Command="rd /s /q &quot;$(ClientModelPath)&quot;" IgnoreExitCode="true" />
 		<Exec Command="mkdir &quot;$(ClientModelPath)&quot;" />-->
 		<Message Importance="high" Text="Scalar/OpenAPI: Starting Angular Client Generation..." />
-		<Exec Command="&quot;$(JavaExe)&quot; -jar &quot;$(GeneratorJar)&quot; generate -i ApiJson/OnBoardingTesterHelper.Server.json -g typescript-angular -o &quot;$(ClientModelPath)&quot; --skip-validate-spec --global-property models" />
+		<Exec Command="&quot;$(JavaExe)&quot; -jar &quot;$(GeneratorJar)&quot; generate -i ApiJson/WebApiAngular.Server.json -g typescript-angular -o &quot;$(ClientModelPath)&quot; --skip-validate-spec --global-property models" />
 	</Target>
 
 </Project>

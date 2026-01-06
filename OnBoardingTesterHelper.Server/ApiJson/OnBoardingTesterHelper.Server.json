@@ -66,6 +66,16 @@
         "tags": [
           "WeatherForecast"
         ],
+        "summary": "Get the weather xpto.",
+        "parameters": [
+          {
+            "name": "local",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",

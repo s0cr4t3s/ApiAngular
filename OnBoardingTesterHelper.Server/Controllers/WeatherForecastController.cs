@@ -14,7 +14,9 @@ namespace OnBoardingTesterHelper.Server.Controllers
 		];
 
 		[HttpGet]
-		public IEnumerable<WeatherForecast> Get()
+		[EndpointSummary("Get the weather xpto.")]
+		[ProducesResponseType(typeof(WeatherForecast[]), StatusCodes.Status200OK)]
+		public IEnumerable<WeatherForecast> Get([FromQuery] string? local = null)
 		{
 			var username = User.Identity?.Name;
 

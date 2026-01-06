@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/login/login';
 import { authGuard } from './guards/auth.guard';
-import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
+import { MainLayoutComponent } from './layout/main-layout/main-layout';
 
 export const routes: Routes = [
 	// Public Routes

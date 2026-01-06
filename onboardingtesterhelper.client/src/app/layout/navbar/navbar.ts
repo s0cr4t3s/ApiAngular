@@ -7,8 +7,8 @@ import { NavService } from '../services/nav.service';
 	selector: 'app-navbar',
 	standalone: true,
 	imports: [MenubarModule, ButtonModule],
-	templateUrl: './navbar.component.html',
-	//styleUrls: ['./navbar.component.css']
+	templateUrl: './navbar.html',
+	//styleUrls: ['./navbar.css']
 })
 export class NavbarComponent implements OnInit {
 	public navService = inject(NavService);

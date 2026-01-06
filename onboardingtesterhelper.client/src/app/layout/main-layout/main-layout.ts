@@ -1,6 +1,6 @@
 import { Component, inject, signal, OnInit } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { SidebarComponent } from '../sidebar/sidebar.component';
+import { SidebarComponent } from '../sidebar/sidebar';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MenuItem } from 'primeng/api';
@@ -15,8 +15,8 @@ import { BadgeModule } from 'primeng/badge';
 	selector: 'app-main-layout',
 	standalone: true,
 	imports: [RouterOutlet, SidebarComponent, ToastModule, ConfirmDialogModule, BreadcrumbModule, ButtonModule, BadgeModule, AvatarModule, MenuModule],
-	templateUrl: './main-layout.component.html', // Pointing to the external file
-	styleUrls: ['./main-layout.component.css']    // Pointing to the external CSS
+	templateUrl: './main-layout.html', // Pointing to the external file
+	styleUrls: ['./main-layout.css']    // Pointing to the external CSS
 })
 export class MainLayoutComponent implements OnInit {
 	private router = inject(Router);

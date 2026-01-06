@@ -7,7 +7,7 @@ import { AvatarModule } from 'primeng/avatar';
 	selector: 'app-sidebar',
 	standalone: true,
 	imports: [MenuModule, AvatarModule],
-	templateUrl: './sidebar.component.html'
+	templateUrl: './sidebar.html'
 })
 export class SidebarComponent implements OnInit {
 	public navService = inject(NavService);

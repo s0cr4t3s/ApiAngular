@@ -9,8 +9,8 @@ import { LoginRequest } from '../../api-generator/model/loginRequest';
 	selector: 'app-login',
 	standalone: true,
 	imports: [CommonModule, FormsModule],
-	templateUrl: './login.component.html',
-	styleUrl: './login.component.scss',
+	templateUrl: './login.html',
+	styleUrl: './login.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent {

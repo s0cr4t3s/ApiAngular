@@ -8,7 +8,6 @@ import { AuthService } from './services/auth.service';
 	standalone: true,
 	imports: [RouterOutlet, NavbarComponent], // Importante para navegação
 	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
 	public auth = inject(AuthService);

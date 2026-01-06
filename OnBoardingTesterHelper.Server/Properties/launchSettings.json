@@ -1,25 +1,42 @@
 {
-    "$schema": "https://json.schemastore.org/launchsettings.json",
-    "profiles": {
-        "http": {
-            "commandName": "Project",
-            "dotnetRunMessages": true,
-            "launchBrowser": true,
-            "applicationUrl": "http://localhost:5272",
-            "environmentVariables": {
-                "ASPNETCORE_ENVIRONMENT": "Development",
-                "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
-            }
-        },
-        "https": {
-            "commandName": "Project",
-            "dotnetRunMessages": true,
-            "launchBrowser": true,
-            "applicationUrl": "https://localhost:7191;http://localhost:5272",
-            "environmentVariables": {
-                "ASPNETCORE_ENVIRONMENT": "Development",
-                "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
-            }
-        }
-    }
+	"profiles": {
+		"http": {
+			"commandName": "Project",
+			"dotnetRunMessages": true,
+			"launchBrowser": true,
+			"applicationUrl": "http://localhost:5272",
+			"environmentVariables": {
+				"ASPNETCORE_ENVIRONMENT": "Development",
+				"ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
+			}
+		},
+		"https": {
+			"commandName": "Project",
+			"launchBrowser": true,
+			"environmentVariables": {
+				"ASPNETCORE_ENVIRONMENT": "Development",
+				"ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
+			},
+			"dotnetRunMessages": true,
+			"applicationUrl": "https://localhost:7191;http://localhost:5272"
+		},
+		"IIS Express (SIBS)": {
+			"commandName": "IISExpress",
+			"launchBrowser": true,
+			"environmentVariables": {
+				"ASPNETCORE_ENVIRONMENT": "Development",
+				"ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
+			},
+			"applicationUrl": "https://localhost:44331;http://localhost:52701"
+		}
+	},
+	"$schema": "https://json.schemastore.org/launchsettings.json",
+	"iisSettings": {
+		"windowsAuthentication": false,
+		"anonymousAuthentication": true,
+		"iisExpress": {
+			"applicationUrl": "http://localhost:52701/",
+			"sslPort": 44331
+		}
+	}
 }

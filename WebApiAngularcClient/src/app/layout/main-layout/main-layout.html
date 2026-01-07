@@ -1,37 +1,44 @@
 <div class="flex flex-column h-screen overflow-hidden">
-	<header class="h-3rem surface-900 text-0 shadow-2 flex align-items-center justify-content-between px-5 z-10">
+	<header class="h-4rem surface-card border-bottom-2 surface-border shadow-2 flex align-items-center justify-content-between px-5 z-10">
 		<div class="flex align-items-center">
-			<p-button icon="pi pi-bars" [text]="true" (onClick)="toggleMenu()" styleClass="text-0 menu-toggle-btn" class="mr-3"></p-button>
+			<p-button icon="pi pi-bars" [text]="true" (onClick)="toggleMenu()" styleClass="p-button-secondary"></p-button>
 
-			<div class="flex align-items-center gap-2 mr-4 cursor-pointer">
+			<div class="flex align-items-center gap-2 mx-4 cursor-pointer">
 				<i class="pi pi-prime text-primary text-4xl"></i>
-				<span class="text-xl font-bold uppercase tracking-wide">OnBoarding</span>
+				<span class="text-xl font-bold uppercase tracking-wide text-900">Api Angular</span>
 			</div>
 
 			<p-breadcrumb [model]="breadcrumbItems()"
 						  [home]="{ icon: 'pi pi-home', routerLink: '/' }"
-						  styleClass="bg-transparent border-none p-0 text-0">
+						  styleClass="bg-transparent border-none p-0">
 			</p-breadcrumb>
 		</div>
 
 		<div class="flex align-items-center gap-4">
-			<i class="pi pi-bell text-xl text-0 p-overlay-badge cursor-pointer mr-2">
+			<p-button [icon]="themeService.isDarkMode() ? 'pi pi-sun' : 'pi pi-moon'"
+					  [text]="true"
+					  severity="secondary"
+					  (onClick)="themeService.toggle()"
+					  styleClass="p-0 w-2rem h-2rem">
+			</p-button>
+
+			<i class="pi pi-bell text-xl text-600 p-overlay-badge cursor-pointer">
 				<p-badge value="3" severity="danger"></p-badge>
 			</i>
 
-			<div class="flex align-items-center gap-3 cursor-pointer p-2 border-round hover:surface-800 transition-colors" (click)="userMenu.toggle($event)">
-				<p-avatar label="AE" shape="circle" styleClass="bg-primary text-white shadow-2"></p-avatar>
+			<div class="flex align-items-center gap-3 cursor-pointer p-2 border-round hover:surface-100 transition-colors" (click)="userMenu.toggle($event)">
+				<p-avatar label="AE" shape="circle"></p-avatar>
 				<div class="flex flex-column">
-					<span class="font-bold text-sm text-0 line-height-1">Amy Elsner</span>
-					<span class="text-xs text-400 mt-1">Webmaster</span>
+					<span class="font-bold text-sm text-900 line-height-1">Amy Elsner</span>
+					<span class="text-xs text-600 mt-1">Webmaster</span>
 				</div>
 			</div>
 			<p-menu #userMenu [model]="navService.userMenuItems()" [popup]="true"></p-menu>
 		</div>
 	</header>
 
-	<div class="flex flex-grow-1 overflow-hidden menu-sidebar">
-		<aside class="h-full surface-900 shadow-2 transition-all transition-duration-300 z-5 overflow-hidden"
+	<div class="flex flex-grow-1 overflow-hidden">
+		<aside class="h-full surface-card border-right-2 surface-border transition-all transition-duration-300 z-5 overflow-hidden"
 			   [style.width]="sidebarActive() ? '15rem' : '0'"
 			   [style.opacity]="sidebarActive() ? '1' : '0'">
 			<div class="w-15rem p-3">
@@ -39,7 +46,7 @@
 			</div>
 		</aside>
 
-		<main class="flex-grow-1 overflow-auto p-4 surface-ground">
+		<main class="flex-grow-1 overflow-auto p-3 surface-ground">
 			<div class="p-4 border-round-xl shadow-1 surface-card min-h-full">
 				<router-outlet></router-outlet>
 			</div>

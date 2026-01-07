@@ -10,18 +10,20 @@ import { ButtonModule } from 'primeng/button';
 import { BadgeModule } from 'primeng/badge';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { NavService } from '../services/layout.service';
+import { ThemeService } from '../services/theme.service';
 
 @Component({
 	selector: 'app-main-layout',
 	standalone: true,
 	imports: [RouterOutlet, SidebarComponent, BreadcrumbModule, ButtonModule, BadgeModule, AvatarModule, MenuModule, ConfirmDialogModule],
 	templateUrl: './main-layout.html', // Pointing to the external file
-	styleUrls: ['./main-layout.css']    // Pointing to the external CSS
+	styleUrls: ['./main-layout.scss']    // Pointing to the external CSS
 })
 export class MainLayoutComponent implements OnInit {
 	private router = inject(Router);
 	private activatedRoute = inject(ActivatedRoute);
 	public navService = inject(NavService);
+	public themeService = inject(ThemeService);
 	sidebarActive = signal(true);
 
 	// This signal feeds the p-breadcrumb in your HTML

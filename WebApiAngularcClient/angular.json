@@ -7,13 +7,13 @@
 			"projectType": "application",
 			"schematics": {
 				"@schematics/angular:component": {
-					"standalone": false
+					"standalone": true
 				},
 				"@schematics/angular:directive": {
-					"standalone": false
+					"standalone": true
 				},
 				"@schematics/angular:pipe": {
-					"standalone": false
+					"standalone": true
 				}
 			},
 			"root": "",
@@ -39,7 +39,7 @@
 						"styles": [
 							"node_modules/primeicons/primeicons.css",
 							"node_modules/primeflex/primeflex.css",
-							"src/styles.css"
+							"src/styles.scss"
 						],
 						"scripts": []
 					},
@@ -101,7 +101,7 @@
 							}
 						],
 						"styles": [
-							"src/styles.css"
+							"src/styles.scss"
 						],
 						"scripts": [],
 						"karmaConfig": "karma.conf.js"

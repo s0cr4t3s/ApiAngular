@@ -2,80 +2,75 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 80vh;
+	min-height: 100vh;
 	padding: 20px;
+	background-color: var(--p-surface-ground); // The deep dark background
 
 	form {
-		background: #ffffff;
-		padding: 2.5rem;
+		/* This matches the inner "Dashboard" container color */
+		background-color: var(--p-surface-section);
+		/* Matching the rounded corners and border from your dashboard image */
+		border: 1px solid var(--p-surface-border);
 		border-radius: 12px;
-		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+		box-shadow: var(--p-card-shadow);
+		padding: 3rem;
 		width: 100%;
-		max-width: 400px;
+		max-width: 450px;
+		transition: all 0.3s ease;
 
 		h2 {
-			margin-bottom: 1.5rem;
-			color: #333;
+			margin-bottom: 2rem;
+			color: var(--p-text-color);
 			text-align: center;
-			font-weight: 600;
-		}
-
-		.error {
-			background-color: #fee2e2;
-			color: #dc2626;
-			padding: 0.75rem;
-			border-radius: 6px;
-			margin-bottom: 1rem;
-			font-size: 0.9rem;
-			text-align: center;
-			border: 1px solid #fecaca;
+			font-weight: 700;
+			letter-spacing: -0.02em;
 		}
 
 		.form-group {
-			margin-bottom: 1.25rem;
+			margin-bottom: 1.5rem;
 
 			label {
 				display: block;
 				margin-bottom: 0.5rem;
-				color: #666;
-				font-size: 0.9rem;
+				color: var(--p-text-muted-color);
+				font-weight: 500;
 			}
 
 			input {
 				width: 100%;
-				padding: 0.75rem;
-				border: 1px solid #ddd;
-				border-radius: 6px;
-				font-size: 1rem;
-				transition: border-color 0.2s;
+				padding: 0.85rem;
+				background: var(--p-inputtext-background);
+				color: var(--p-inputtext-color);
+				border: 1px solid var(--p-inputtext-border-color);
+				border-radius: 8px;
 
 				&:focus {
 					outline: none;
-					border-color: #2563eb; // Professional Blue
-					box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+					border-color: var(--p-primary-color);
+					/* Subtle glow to match the Noir preset */
+					box-shadow: 0 0 0 1px var(--p-primary-color);
 				}
 			}
 		}
 
 		button {
 			width: 100%;
-			padding: 0.75rem;
-			background-color: #2563eb;
-			color: white;
+			padding: 0.85rem;
+			margin-top: 1rem;
+			background-color: var(--p-primary-color);
+			color: var(--p-primary-contrast-color);
 			border: none;
-			border-radius: 6px;
-			font-size: 1rem;
-			font-weight: 600;
+			border-radius: 8px;
+			font-weight: 700;
 			cursor: pointer;
-			transition: background-color 0.2s;
+			transition: transform 0.1s active;
 
-			&:hover:not(:disabled) {
-				background-color: #1d4ed8;
+			&:hover {
+				filter: brightness(1.2);
 			}
 
-			&:disabled {
-				background-color: #93c5fd;
-				cursor: not-allowed;
+			&:active {
+				transform: scale(0.98); // Slight press effect for better UX
 			}
 		}
 	}

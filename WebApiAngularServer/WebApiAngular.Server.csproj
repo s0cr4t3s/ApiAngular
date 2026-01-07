@@ -36,7 +36,7 @@
 
 	<Target Name="GenerateAngularClient" AfterTargets="GenerateOpenApiDocuments" Condition="'$(Configuration)' == 'Debug'">
 		<PropertyGroup>
-			<ClientModelPath>$(MSBuildProjectDirectory)\..\WebApiAngular.Client\src\app\api-generator</ClientModelPath>
+			<ClientModelPath>$(MSBuildProjectDirectory)\..\WebApiAngularClient\src\app\api-generator</ClientModelPath>
 			<GeneratorJar>$(MSBuildProjectDirectory)\..\tools\openapi-generator-cli-7.18.0.jar</GeneratorJar>
 			<JavaExe>C:\Program Files\Java\jdk-25\bin\java.exe</JavaExe>
 		</PropertyGroup>

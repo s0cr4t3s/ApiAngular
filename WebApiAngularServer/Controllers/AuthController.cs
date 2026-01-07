@@ -22,6 +22,8 @@ namespace WebApiAngular.Server.Controllers
 		[HttpPost("login")]
 		public IActionResult Login([FromBody] LoginRequest request)
 		{
+			Thread.Sleep(5000);
+
 			// 1. Validate User (Replace this with your Database check)
 			if (request.Username != "admin" || request.Password != "password")
 			{

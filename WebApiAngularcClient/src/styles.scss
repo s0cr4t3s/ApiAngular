@@ -45,28 +45,3 @@ html, body {
 	z-index: $z-index-progress;
 	height: 4px; // Explicit height for the top bar
 }
-
-/* ==========================================================================
-   4. SIDEBAR NAVIGATION
-   ========================================================================== */
-.menu-sidebar {
-	aside {
-		/* This variable automatically changes when .my-app-dark is toggled */
-		background-color: var(--p-surface-section);
-		border-right: 1px solid var(--p-surface-border);
-
-		.p-menu-item {
-			margin-left: $sidebar-indent;
-		}
-		// Active Link Styling
-		.p-menu .p-menuitem.active-route {
-			.p-menuitem-link {
-				.p-menuitem-text,
-				.p-menuitem-icon {
-					color: var(--p-primary-color) !important;
-					font-weight: 700 !important;
-				}
-			}
-		}
-	}
-}

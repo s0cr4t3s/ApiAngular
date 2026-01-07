@@ -1,4 +1,4 @@
-import { Component, inject, signal, OnInit } from '@angular/core';
+import { Component, inject, signal, OnInit, ViewEncapsulation } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { SidebarComponent } from '../sidebar/sidebar';
 import { MenuItem } from 'primeng/api';
@@ -17,7 +17,7 @@ import { ThemeService } from '../services/theme.service';
 	standalone: true,
 	imports: [RouterOutlet, SidebarComponent, BreadcrumbModule, ButtonModule, BadgeModule, AvatarModule, MenuModule, ConfirmDialogModule],
 	templateUrl: './main-layout.html', // Pointing to the external file
-	styleUrls: ['./main-layout.scss']    // Pointing to the external CSS
+	styleUrls: ['./main-layout.scss'],    // Pointing to the external CSS
 })
 export class MainLayoutComponent implements OnInit {
 	private router = inject(Router);

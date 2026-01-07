@@ -72,6 +72,72 @@ const NoirPreset = definePreset(Aura, {
 	}
 });
 
+export const MySibsTheme = definePreset(Aura, {
+	semantic: {
+		primary: {
+			// Using the Royal Blue from the SIBS "Continuar" button
+			50: '#f5f7ff',
+			100: '#ebf0fe',
+			200: '#ced9fd',
+			300: '#adc0fb',
+			400: '#8ca6f9',
+			500: '#4c6ef5', // The core corporate blue
+			600: '#4361d8',
+			700: '#3851b5',
+			800: '#2d4192',
+			900: '#253577',
+			950: '#161f46'
+		},
+		colorScheme: {
+			light: {
+				surface: {
+					0: '#ffffff',
+					50: '#f8fafc',  // Cool gray from the background
+					100: '#f1f5f9',
+					200: '#e2e8f0',
+					300: '#cbd5e1',
+					400: '#94a3b8',
+					500: '#64748b',
+					600: '#475569',
+					700: '#334155',
+					800: '#1e293b',
+					900: '#0f172a',
+					950: '#020617'
+				},
+				primary: {
+					color: '{primary.500}',
+					contrastColor: '#ffffff',
+					hoverColor: '{primary.600}',
+					activeColor: '{primary.700}'
+				}
+			},
+			dark: {
+				surface: {
+					// Deep Zinc palette for the Noir look you liked
+					0: '#ffffff',
+					50: '{zinc.50}',
+					100: '{zinc.100}',
+					200: '{zinc.200}',
+					300: '{zinc.300}',
+					400: '{zinc.400}',
+					500: '{zinc.500}',
+					600: '{zinc.600}',
+					700: '{zinc.700}',
+					800: '{zinc.800}',
+					900: '{zinc.900}',
+					950: '{zinc.950}'
+				},
+				primary: {
+					color: '{primary.400}', // Brighter blue for dark mode visibility
+					contrastColor: '#ffffff',
+					hoverColor: '{primary.300}',
+					activeColor: '{primary.200}'
+				}
+			}
+		}
+	}
+});
+
 export const appConfig: ApplicationConfig = {
 	providers: [
 		provideRouter(routes),
@@ -90,7 +156,7 @@ export const appConfig: ApplicationConfig = {
 		// --- PrimeNG Specifics ---
 		providePrimeNG({
 			theme: {
-				preset: MyPreset, // This applies the modern "Aura" look [cite: 2025-10-10]
+				preset: MySibsTheme, // This applies the modern "Aura" look [cite: 2025-10-10]
 				options: {
 					darkModeSelector: '.my-app-dark', // Disables automatic dark mode if you want light only
 					ripple: true             // Enables the material-like ripple effect

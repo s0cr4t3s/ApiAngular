@@ -1,0 +1,89 @@
+// Variables specific to this layout
+$sidebar-indent: 20px;
+
+:host {
+	display: block; // Ensures the component takes up space
+}
+
+header {
+	/* Uses Aura surface-card to match the SIBS corporate look */
+	background-color: var(--p-surface-card);
+	border-bottom: 1px solid var(--p-surface-border);
+}
+
+/*aside {
+	background-color: var(--p-surface-section);*/
+	/* These transitions are handled by the browser's GPU for performance */
+	/*transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	// Scoped sidebar menu styling
+	::ng-deep {
+		.p-menu-item {
+			margin-left: $sidebar-indent;
+		}
+
+		.p-menuitem.active-route {
+			.p-menuitem-text,
+			.p-menuitem-icon {
+				color: var(--p-primary-color) !important;
+				font-weight: 700 !important;
+			}
+		}
+	}
+}*/
+
+aside {
+	/* 1. DARK BLUE FOR ALL SIDEBAR */
+	background-color: #1a1b3a !important; // Deep Corporate Navy Blue
+	border-right: 1px solid rgba(255, 255, 255, 0.05);
+	height: 100%;
+
+	::ng-deep {
+		.p-menu {
+			background: transparent;
+			border: none;
+			width: 100%;
+		}
+
+		.p-menu-submenu-label {
+			color: #ffffff !important;
+		}
+
+		.p-menu-item {
+			color: #ffffff !important;
+
+			.p-menu-item-content {
+				color: inherit;
+				background: transparent !important;
+				font-size: 1rem;
+				padding: 0 0 0 1.25rem;
+				font-weight: 700;
+
+				&:hover {
+					color: #ffffff !important;
+				}
+			}
+
+			.p-menu-item-icon, .p-menu-item-text {
+				color: inherit;
+			}
+
+			.p-menu-item-label {
+				font-weight: 100;
+			}
+
+			&:hover, &.p-focus {
+				background-color: var(--p-primary-900);
+				color: #ffffff !important;
+			}
+		}
+	}
+}
+
+main {
+	background-color: var(--p-surface-ground);
+	// The "Weather Forecast" card container
+	.surface-card {
+		background-color: var(--p-surface-card);
+		border: 1px solid var(--p-surface-border);
+	}
+}

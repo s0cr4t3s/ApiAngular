@@ -86,7 +86,7 @@ export const MySibsTheme = definePreset(Aura, {
 			700: '#3851b5',
 			800: '#2d4192',
 			900: '#253577',
-			950: '#161f46'
+			950: '#171344'
 		},
 		colorScheme: {
 			light: {

@@ -1,28 +1,34 @@
+/* ==========================================================================
+   LOGIN COMPONENT STYLES
+   ========================================================================== */
+
 .login-container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
 	padding: 20px;
-	background-color: var(--p-surface-ground); // The deep dark background
+	background-color: var(--p-surface-ground);
 
 	form {
-		/* This matches the inner "Dashboard" container color */
 		background-color: var(--p-surface-section);
-		/* Matching the rounded corners and border from your dashboard image */
-		border: 1px solid var(--p-surface-border);
-		border-radius: 12px;
-		box-shadow: var(--p-card-shadow);
-		padding: 3rem;
+		border: 1px solid var(--p-surface-border) !important;
+		box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+		border-radius: 16px;
+		padding: 3.5rem;
 		width: 100%;
 		max-width: 450px;
-		transition: all 0.3s ease;
+		position: relative;
+		box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+		transform: translateY(-8px);
+		transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
 
 		h2 {
-			margin-bottom: 2rem;
+			margin-bottom: 2.5rem;
 			color: var(--p-text-color);
 			text-align: center;
 			font-weight: 700;
+			font-size: 2rem;
 			letter-spacing: -0.02em;
 		}
 
@@ -31,47 +37,69 @@
 
 			label {
 				display: block;
-				margin-bottom: 0.5rem;
+				margin-bottom: 0.6rem;
 				color: var(--p-text-muted-color);
-				font-weight: 500;
+				font-weight: 600;
+				font-size: 0.9rem;
 			}
 
 			input {
 				width: 100%;
-				padding: 0.85rem;
+				padding: 0.85rem 1rem;
 				background: var(--p-inputtext-background);
 				color: var(--p-inputtext-color);
 				border: 1px solid var(--p-inputtext-border-color);
 				border-radius: 8px;
+				font-size: 1rem;
+				transition: border-color 0.2s, box-shadow 0.2s;
 
 				&:focus {
 					outline: none;
 					border-color: var(--p-primary-color);
-					/* Subtle glow to match the Noir preset */
-					box-shadow: 0 0 0 1px var(--p-primary-color);
+					// Blue glow to match focus state [cite: 2026-01-07]
+					box-shadow: 0 0 0 3px rgba(76, 110, 245, 0.2);
 				}
 			}
 		}
 
 		button {
 			width: 100%;
-			padding: 0.85rem;
-			margin-top: 1rem;
-			background-color: var(--p-primary-color);
+			padding: 1rem;
+			margin-top: 1.5rem;
+			background-color: var(--p-primary-600); // SIBS Blue [cite: 2026-01-07]
 			color: var(--p-primary-contrast-color);
 			border: none;
 			border-radius: 8px;
 			font-weight: 700;
+			font-size: 1.1rem;
 			cursor: pointer;
-			transition: transform 0.1s active;
+			transition: all 0.2s ease;
 
-			&:hover {
-				filter: brightness(1.2);
+			&:hover:not(:disabled) {
+				filter: brightness(1.1);
+				/*transform: translateY(-1px);*/
 			}
 
-			&:active {
-				transform: scale(0.98); // Slight press effect for better UX
+			&:active:not(:disabled) {
+				transform: translateY(0);
+				filter: brightness(0.9);
 			}
+
+			&:disabled {
+				opacity: 0.6;
+				cursor: not-allowed;
+			}
+		}
+
+		.error {
+			background-color: rgba(239, 68, 68, 0.1);
+			color: #f87171;
+			padding: 0.75rem;
+			border-radius: 8px;
+			margin-bottom: 1.5rem;
+			border: 1px solid rgba(239, 68, 68, 0.2);
+			text-align: center;
+			font-size: 0.85rem;
 		}
 	}
 }

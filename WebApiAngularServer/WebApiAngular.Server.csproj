@@ -10,7 +10,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\WebApiAngular.Client\WebApiAngular.Client.esproj">
+		<ProjectReference Include="..\WebApiAngularClient\WebApiAngular.Client.esproj">
 			<ReferenceOutputAssembly>false</ReferenceOutputAssembly>
 		</ProjectReference>
 	</ItemGroup>

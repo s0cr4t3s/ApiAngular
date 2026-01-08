@@ -50,6 +50,8 @@
 
 		<Message Importance="high" Text="NSwag: Starting Angular Client Generation..." />
 		<Exec Command="dotnet exec &quot;$(NSwagDir_Net90)dotnet-nswag.dll&quot; openapi2tsclient /input:&quot;ApiJson/WebApiAngular.Server.json&quot; /output:&quot;$(ClientModelPath)\api-models.ts&quot; /template:Angular /GenerateClientClasses:false /GenerateClientInterfaces:false /TypeStyle:Interface /rxJsVersion:7" ConsoleToMSBuild="true" />
+
+		<Exec Command="powershell -Command &quot;(gc '$(ClientModelPath)\api-models.ts') -replace '\[key: string\]: any;', '' | Out-File -encoding utf8 '$(ClientModelPath)\api-models.ts'&quot;" />
 		<Message Importance="high" Text="NSwag: Angular Client Generation Completed." />
 	</Target>
 

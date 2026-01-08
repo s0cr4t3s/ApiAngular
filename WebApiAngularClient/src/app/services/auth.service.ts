@@ -2,7 +2,7 @@ import { Injectable, signal, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap, switchMap, firstValueFrom, catchError, of, finalize } from 'rxjs';
 import { Router } from '@angular/router';
-import { LoginRequest } from '../api-generator/model/loginRequest';
+import { LoginRequest } from '../api-generator/api-models';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {

@@ -25,8 +25,17 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Scalar.AspNetCore" Version="2.11.10" />
+		<PackageReference Include="Scalar.AspNetCore" Version="2.12.3" />
+
+		<PackageReference Include="NSwag.MSBuild" Version="14.6.3">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
 	</ItemGroup>
+
+	<PropertyGroup>
+		<RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+	</PropertyGroup>
 
 	<PropertyGroup>
 		<OpenApiDocumentsDirectory>$(MSBuildProjectDirectory)\ApiJson</OpenApiDocumentsDirectory>
@@ -37,14 +46,11 @@
 	<Target Name="GenerateAngularClient" AfterTargets="GenerateOpenApiDocuments" Condition="'$(Configuration)' == 'Debug'">
 		<PropertyGroup>
 			<ClientModelPath>$(MSBuildProjectDirectory)\..\WebApiAngularClient\src\app\api-generator</ClientModelPath>
-			<GeneratorJar>$(MSBuildProjectDirectory)\..\tools\openapi-generator-cli-7.18.0.jar</GeneratorJar>
-			<JavaExe>C:\Program Files\Java\jdk-25\bin\java.exe</JavaExe>
 		</PropertyGroup>
-		<!--<Message Importance="high" Text="Scalar/OpenAPI: Cleaning and Re-generating Models..." />
-		<Exec Command="rd /s /q &quot;$(ClientModelPath)&quot;" IgnoreExitCode="true" />
-		<Exec Command="mkdir &quot;$(ClientModelPath)&quot;" />-->
-		<Message Importance="high" Text="Scalar/OpenAPI: Starting Angular Client Generation..." />
-		<Exec Command="&quot;$(JavaExe)&quot; -jar &quot;$(GeneratorJar)&quot; generate -i ApiJson/WebApiAngular.Server.json -g typescript-angular -o &quot;$(ClientModelPath)&quot; --skip-validate-spec --global-property models" />
+
+		<Message Importance="high" Text="NSwag: Starting Angular Client Generation..." />
+		<Exec Command="dotnet exec &quot;$(NSwagDir_Net90)dotnet-nswag.dll&quot; openapi2tsclient /input:&quot;ApiJson/WebApiAngular.Server.json&quot; /output:&quot;$(ClientModelPath)\api-models.ts&quot; /template:Angular /GenerateClientClasses:false /GenerateClientInterfaces:false /TypeStyle:Interface /rxJsVersion:7" ConsoleToMSBuild="true" />
+		<Message Importance="high" Text="NSwag: Angular Client Generation Completed." />
 	</Target>
 
 </Project>

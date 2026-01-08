@@ -2,7 +2,8 @@ import { Component, inject, OnInit, DestroyRef } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { signal } from '@angular/core';
-import { WeatherService, WeatherForecast } from './weather.service'; // Importe o serviço
+import { WeatherService } from './weather.service'; // Importe o serviço
+import { WeatherForecast } from '../../api-generator/api-models';
 
 @Component({
 	selector: 'weather-component',

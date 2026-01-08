@@ -5,7 +5,7 @@
     <File Path=".gitignore" />
     <File Path="README.md" />
   </Folder>
-  <Project Path="WebApiAngularcClient/WebApiAngular.Client.esproj">
+  <Project Path="WebApiAngularClient/WebApiAngular.Client.esproj">
     <Build />
     <Deploy />
   </Project>

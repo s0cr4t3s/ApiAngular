@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { LoginRequest } from '../../api-generator/model/loginRequest';
 import { MessageService } from 'primeng/api';
+import { LoginRequest } from '../../api-generator/api-models';
 
 @Component({
 	selector: 'app-login',

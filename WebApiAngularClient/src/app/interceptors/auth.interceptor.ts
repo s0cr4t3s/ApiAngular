@@ -10,10 +10,6 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 	const authService = inject(AuthService);
 	const loadingService = inject(LoadingService);
 
-	if (req.method.toUpperCase() !== 'GET') {
-		loadingService.show();
-	}
-
 	return next(req).pipe(
 		catchError((error: HttpErrorResponse) => {
 			// 401 Unauthorized means the .NET JWT cookie is missing or expired
@@ -27,7 +23,6 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
 			// Re-throw the error so specific components can still handle it if they want
 			return throwError(() => error);
-		}),
-		finalize(() => loadingService.hide())
+		})
 	);
 };

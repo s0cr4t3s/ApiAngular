@@ -13,6 +13,7 @@ import { AuthService } from './services/auth.service';
 import { authInterceptor } from './interceptors/auth.interceptor';
 import { DefaultBlueTheme } from './layout/theme.config';
 import { environment } from '../environments/environment';
+import { loadingInterceptor } from './interceptors/loading.interceptor';
 
 registerLocaleData(localePt);
 
@@ -28,7 +29,8 @@ export const appConfig: ApplicationConfig = {
 		provideHttpClient(
 			withInterceptors([
 				(req, next) => next(req.clone({ withCredentials: true })),
-				authInterceptor
+				authInterceptor,
+				loadingInterceptor
 			])
 		),
 		provideAppInitializer(() => {

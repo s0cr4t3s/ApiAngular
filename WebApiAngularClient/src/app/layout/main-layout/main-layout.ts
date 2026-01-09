@@ -11,6 +11,7 @@ import { BadgeModule } from 'primeng/badge';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { NavService } from '../services/layout.service';
 import { ThemeService } from '../services/theme.service';
+import { ENVIRONMENT_CONFIG } from '../../app.config';
 
 @Component({
 	selector: 'app-main-layout',
@@ -28,6 +29,10 @@ export class MainLayoutComponent implements OnInit {
 
 	// This signal feeds the p-breadcrumb in your HTML
 	breadcrumbItems = signal<MenuItem[]>([]);
+
+	protected environmentConfig = inject(ENVIRONMENT_CONFIG);
+
+	public applicationName = this.environmentConfig.applicationName;
 
 	ngOnInit() {
 

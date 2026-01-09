@@ -1,4 +1,4 @@
-import { ApplicationConfig, LOCALE_ID, provideAppInitializer, inject } from '@angular/core';
+import { ApplicationConfig, LOCALE_ID, provideAppInitializer, inject, InjectionToken } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { provideRouter } from '@angular/router';
@@ -7,15 +7,20 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 // PrimeNG Imports
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { providePrimeNG } from 'primeng/config';
-import Aura from '@primeng/themes/aura'; // Or your preferred theme
-import { definePreset } from '@primeng/themes';
 
 import { routes } from './app.routes';
 import { AuthService } from './services/auth.service';
 import { authInterceptor } from './interceptors/auth.interceptor';
 import { DefaultBlueTheme } from './layout/theme.config';
+import { environment } from '../environments/environment';
 
 registerLocaleData(localePt);
+
+// This fix Circular Dependencies
+export const ENVIRONMENT_CONFIG = new InjectionToken<typeof environment>('environment.config');
+export const appConfigProviders = [
+	{ provide: ENVIRONMENT_CONFIG, useValue: environment }
+];
 
 export const appConfig: ApplicationConfig = {
 	providers: [
@@ -30,6 +35,7 @@ export const appConfig: ApplicationConfig = {
 			const auth = inject(AuthService);
 			return auth.initAuth();
 		}),
+		appConfigProviders,
 		{ provide: LOCALE_ID, useValue: 'pt-PT' },
 
 		// --- PrimeNG Specifics ---

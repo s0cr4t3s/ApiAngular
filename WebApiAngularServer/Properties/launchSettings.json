@@ -1,9 +1,19 @@
 {
+	"$schema": "https://json.schemastore.org/launchsettings.json",
+	"iisSettings": {
+		"windowsAuthentication": false,
+		"anonymousAuthentication": true,
+		"iisExpress": {
+			"applicationUrl": "http://localhost:52701",
+			"sslPort": 44331
+		}
+	},
 	"profiles": {
 		"http": {
 			"commandName": "Project",
 			"dotnetRunMessages": true,
 			"launchBrowser": true,
+			"nativeDebugging": false,
 			"applicationUrl": "http://localhost:5272",
 			"environmentVariables": {
 				"ASPNETCORE_ENVIRONMENT": "Development",
@@ -12,31 +22,23 @@
 		},
 		"https": {
 			"commandName": "Project",
+			"dotnetRunMessages": true,
 			"launchBrowser": true,
+			"nativeDebugging": false,
+			"applicationUrl": "https://localhost:7191;http://localhost:5272",
 			"environmentVariables": {
 				"ASPNETCORE_ENVIRONMENT": "Development",
 				"ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
-			},
-			"dotnetRunMessages": true,
-			"applicationUrl": "https://localhost:7191;http://localhost:5272"
+			}
 		},
-		"IIS Express (SIBS)": {
+		"IIS Express": {
 			"commandName": "IISExpress",
 			"launchBrowser": true,
+			"nativeDebugging": false,
 			"environmentVariables": {
 				"ASPNETCORE_ENVIRONMENT": "Development",
 				"ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
-			},
-			"applicationUrl": "https://localhost:44331;http://localhost:52701"
-		}
-	},
-	"$schema": "https://json.schemastore.org/launchsettings.json",
-	"iisSettings": {
-		"windowsAuthentication": false,
-		"anonymousAuthentication": true,
-		"iisExpress": {
-			"applicationUrl": "http://localhost:52701/",
-			"sslPort": 44331
+			}
 		}
 	}
 }

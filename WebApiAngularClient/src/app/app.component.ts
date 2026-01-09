@@ -5,6 +5,7 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { LoadingService } from './services/loading.service';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { ENVIRONMENT_CONFIG } from './app.config';
 
 @Component({
 	selector: 'app-root',
@@ -15,10 +16,10 @@ import { ProgressBarModule } from 'primeng/progressbar';
 export class AppComponent implements OnInit {
 	public auth = inject(AuthService);
 	public loadingService = inject(LoadingService);
-
-	title = 'Sistema de Onboarding';
+	protected environmentConfig = inject(ENVIRONMENT_CONFIG);
 
 	ngOnInit() {
+		console.log('Current Environment: ', this.environmentConfig.environmentState);
 		this.auth.initAuth();
 	}
 }

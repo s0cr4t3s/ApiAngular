@@ -1,12 +1,11 @@
 import { Injectable, signal, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { tap, switchMap, firstValueFrom, catchError, of, finalize } from 'rxjs';
 import { Router } from '@angular/router';
 import { LoginRequest } from '../api-generator/api-models';
+import { ApiServiceBase } from './apiServiceBase';
 
 @Injectable({ providedIn: 'root' })
-export class AuthService {
-	private http = inject(HttpClient);
+export class AuthService extends ApiServiceBase {
 	private router = inject(Router);
 
 	// Using Signals for Angular 21 performance
@@ -22,7 +21,7 @@ export class AuthService {
 					this.isAuthenticated.set(true);
 				}),
 				catchError(() => {
-					console.log('User not logged in or session expired');
+					console.warn('Authentication failed: User is not logged in or session has expired.');
 					this.clearSession();
 					return of(null);
 				}),
@@ -32,7 +31,7 @@ export class AuthService {
 	}
 
 	login(loginRequest: LoginRequest) {
-		return this.http.post('/api/auth/login', loginRequest).pipe(
+		return this.post('/auth/login', loginRequest).pipe(
 			// Once login succeeds, immediately call 'me' to get user details
 			switchMap(() => this.checkAuthStatus())
 		);
@@ -40,7 +39,7 @@ export class AuthService {
 
 	logout() {
 		// 1. Tell the server to clear the cookie
-		this.http.post('/api/auth/logout', {}).subscribe({
+		this.post('/auth/logout', {}).subscribe({
 			next: () => this.clearSession(false),
 			error: () => this.clearSession(false) // Clear local state even if server fails
 		});
@@ -48,7 +47,7 @@ export class AuthService {
 
 	checkAuthStatus() {
 		// This hits your [Authorize] GetCurrentUser() method in .NET 10
-		return this.http.get('/api/auth/current-user').pipe(
+		return this.get('/auth/current-user').pipe(
 			tap(user => {
 				this.currentUser.set(user);
 				this.isAuthenticated.set(true);

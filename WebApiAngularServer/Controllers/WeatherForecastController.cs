@@ -16,20 +16,21 @@ namespace WebApiAngular.Server.Controllers
 
 		[HttpGet]
 		[EndpointSummary("Get the weather xpto.")]
-		[ProducesResponseType(typeof(WeatherForecast[]), StatusCodes.Status200OK)]
-		public IEnumerable<WeatherForecast> Get([FromQuery] string? local = null)
+		[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(WeatherForecast[]))]
+		[ProducesResponseType(StatusCodes.Status400BadRequest)]
+		public IActionResult Get([FromQuery] string? local = null)
 		{
 			Thread.Sleep(2000);
 
 			var username = User.Identity?.Name;
 
-			return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+			return Ok(Enumerable.Range(1, 5).Select(index => new WeatherForecast
 			{
 				Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
 				TemperatureC = Random.Shared.Next(-20, 55),
 				Summary = _Summaries[Random.Shared.Next(_Summaries.Length)]
 			})
-			.ToArray();
+			.ToArray());
 		}
 	}
 }

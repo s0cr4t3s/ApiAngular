@@ -1,6 +1,7 @@
 export const environment = {
 	production: false,
 	environmentState: 'ENVIRONMENT -> Development',
+	environmentName: 'Development',
 	applicationName: 'Api Angular (DEV)',
-	apiUrl: 'https://localhost:44331/api' // Your local .NET dev port
+	configFileName: 'config.dev.json'
 };

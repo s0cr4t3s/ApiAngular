@@ -60,7 +60,7 @@ const NoirPreset = definePreset(Aura, {
 export const DefaultBlueTheme = definePreset(Aura, {
 	semantic: {
 		primary: {
-			// Using the Royal Blue from the SIBS "Continuar" button
+			// Using the Royal Blue from the "Continuar" button
 			50: '#f5f7ff',
 			100: '#ebf0fe',
 			200: '#ced9fd',

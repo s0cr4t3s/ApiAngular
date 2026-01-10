@@ -1,6 +1,6 @@
 {
 	"environmentName": "Production",
 
-	// Settings for the installation team. 
+	"__comment": "Settings for the installation team.",
 	"apiUrl": "https://t0.api.pt/api"
 }

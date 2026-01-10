@@ -1,0 +1,10 @@
+{
+	"HEADER": {
+		"LANGUAGE_PT": "Português",
+		"LANGUAGE_EN": "Inglês"
+	},
+	"HOME": {
+		"TITLE": "Bem-vindo",
+		"SELECT_LANG": "Selecionar Idioma"
+	}
+}

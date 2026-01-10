@@ -17,6 +17,9 @@ import { loadingInterceptor } from './interceptors/loading.interceptor';
 import { AppConfig, ConfigurationService } from './services/configuration.service';
 import { lastValueFrom, throwError } from 'rxjs';
 import { errorInterceptor } from './interceptors/error.interceptor';
+import { provideTranslateHttpLoader, TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideTranslateService } from '@ngx-translate/core';
+import { StorageKyes } from './core/constants';
 
 registerLocaleData(localePt);
 
@@ -25,6 +28,8 @@ export const ENVIRONMENT_CONFIG = new InjectionToken<typeof environment>('enviro
 export const appConfigProviders = [
 	{ provide: ENVIRONMENT_CONFIG, useValue: environment }
 ];
+
+const savedLang = localStorage.getItem(StorageKyes.UserLanguage) || 'pt';
 
 export const appConfig: ApplicationConfig = {
 	providers: [
@@ -37,6 +42,14 @@ export const appConfig: ApplicationConfig = {
 				errorInterceptor
 			])
 		),
+		provideTranslateService({
+			defaultLanguage: 'pt',
+			lang: savedLang,
+			loader: provideTranslateHttpLoader({
+				prefix: './i18n/', // Path in your 'public' folder [cite: 2025-10-10]
+				suffix: '.json'
+			})
+		}),
 		provideAppInitializer(() => {
 			const http = inject(HttpClient);
 			const configService = inject(ConfigurationService);

@@ -1,6 +1,6 @@
 {
 	"environmentName": "Development",
 
-	// Settings for the installation team. 
+	"__comment": "Settings for the installation team.",
 	"apiUrl": "https://localhost:44331/api"
 }

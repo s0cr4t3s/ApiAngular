@@ -44,6 +44,8 @@
 					</div>
 				</div>
 				<p-menu #userMenu [model]="navService.userMenuItems()" [popup]="true"></p-menu>
+				<button (click)="changeLanguage('pt')">{{ 'HEADER.LANGUAGE_PT' | translate }}</button>
+				<button (click)="changeLanguage('en')">{{ 'HEADER.LANGUAGE_EN' | translate }}</button>
 			</div>
 		</header>
 

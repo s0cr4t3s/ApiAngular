@@ -63,7 +63,7 @@ export class MainLayoutComponent implements OnInit {
 		}
 
 		const savedLang = localStorage.getItem(StorageKyes.UserLanguage) || this.layoutService.languageConfigDefault().language;
-		this.selectedlanguage = this.layoutService.languageConfigItems().find(c => c.language === savedLang)?.code;
+		this.selectedlanguage = savedLang;
 
 		// 1. Build the breadcrumb for the CURRENT route immediately on load
 		this.breadcrumbItems.set(this.createBreadcrumbs(this.activatedRoute.root));
@@ -81,20 +81,15 @@ export class MainLayoutComponent implements OnInit {
 	}
 
 	onLanguageChange(event: any) {
-		let newLang = this.layoutService.languageConfigItems().find(c => c.code == event)?.language || this.layoutService.languageConfigDefault().language;
-		this.changeLanguage(newLang.toLowerCase());
-	}
-
-	changeLanguage(lang: string) {
-		this.translate.use(lang);
-		localStorage.setItem(StorageKyes.UserLanguage, lang);
+		this.translate.use(event.toLowerCase());
+		localStorage.setItem(StorageKyes.UserLanguage, event.toLowerCase());
 	}
 
 	@HostListener('window:storage', ['$event'])
 	onStorageChange(event: StorageEvent) {
 		if (event.key === 'user_lang' && event.newValue) {
 			this.translate.use(event.newValue);
-			this.selectedlanguage = this.layoutService.languageConfigItems().find(c => c.language === event.newValue)?.code || this.layoutService.languageConfigDefault().code;
+			this.selectedlanguage = event.newValue;
 		}
 	}
 

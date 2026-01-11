@@ -3,6 +3,7 @@ import { tap, switchMap, firstValueFrom, catchError, of, finalize } from 'rxjs';
 import { Router } from '@angular/router';
 import { LoginRequest } from '../api-generator/api-models';
 import { ApiServiceBase } from './apiServiceBase';
+import { StorageKyes } from '../core/constants';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService extends ApiServiceBase {
@@ -38,11 +39,13 @@ export class AuthService extends ApiServiceBase {
 	}
 
 	logout() {
-		// 1. Tell the server to clear the cookie
-		this.post('/auth/logout', {}).subscribe({
-			next: () => this.clearSession(false),
-			error: () => this.clearSession(false) // Clear local state even if server fails
-		});
+		this.post('/auth/logout', {})
+			.pipe(
+				finalize(() => {
+					this.clearSession(false);
+				})
+			)
+			.subscribe();
 	}
 
 	checkAuthStatus() {
@@ -62,6 +65,8 @@ export class AuthService extends ApiServiceBase {
 		// Reset signals
 		this.currentUser.set(null);
 		this.isAuthenticated.set(false);
+		
+		this.handleLocalStorageReset();
 
 		// Redirect with query params
 		// If the user is already on /login, we don't want to save that as the returnUrl
@@ -71,6 +76,19 @@ export class AuthService extends ApiServiceBase {
 			});
 		} else {
 			this.router.navigate(['/login']);
+		}
+	}
+
+	private handleLocalStorageReset() {
+		// Save the current language temporarily
+		const currentLang = localStorage.getItem(StorageKyes.UserLanguage);
+
+		// Wipe everything
+		localStorage.clear();
+
+		// Put the language back so the Login Page looks correct
+		if (currentLang) {
+			localStorage.setItem(StorageKyes.UserLanguage, currentLang);
 		}
 	}
 }

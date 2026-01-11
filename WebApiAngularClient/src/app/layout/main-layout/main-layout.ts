@@ -16,6 +16,7 @@ import { TranslateService, TranslateModule, TranslatePipe } from '@ngx-translate
 import { StorageKyes } from '../../core/constants';
 import { SelectModule } from 'primeng/select';
 import { FormsModule } from '@angular/forms';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
 	selector: 'app-main-layout',
@@ -41,6 +42,7 @@ export class MainLayoutComponent implements OnInit {
 	private activatedRoute = inject(ActivatedRoute);
 	public layoutService = inject(LayoutService);
 	public themeService = inject(ThemeService);
+	public languageService = inject(LanguageService);
 	private translate = inject(TranslateService);
 	sidebarActive = signal(true);
 
@@ -58,11 +60,11 @@ export class MainLayoutComponent implements OnInit {
 			this.layoutService.loadUserMenu();
 		}
 
-		if (this.layoutService.languageConfigItems().length === 0) {
-			this.layoutService.loadLanguageConfig();
+		if (this.languageService.languageConfigItems().length === 0) {
+			this.languageService.loadLanguageConfig();
 		}
 
-		const savedLang = localStorage.getItem(StorageKyes.UserLanguage) || this.layoutService.languageConfigDefault().language;
+		const savedLang = localStorage.getItem(StorageKyes.UserLanguage) || this.languageService.languageConfigDefault().language;
 		this.selectedlanguage = savedLang;
 
 		// 1. Build the breadcrumb for the CURRENT route immediately on load

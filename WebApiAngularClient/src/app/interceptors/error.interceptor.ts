@@ -3,13 +3,16 @@ import { catchError, throwError } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { inject } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { TranslateService } from '@ngx-translate/core';
 
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
 	const authService = inject(AuthService);
 	const messageService = inject(MessageService);
+	const translate = inject(TranslateService);
 	return next(req).pipe(
 		catchError((error: HttpErrorResponse) => {
 			let errorMessage = 'An unknown error occurred!';
+			let errorCode = 'DEFAULT_ERROR';
 
 			// 1. Handle .NET API Side Errors (4xx, 5xx)
 			if (error.error instanceof ErrorEvent) {
@@ -44,8 +47,8 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
 
 			messageService.add({
 				severity: 'error',
-				summary: 'Erro!',
-				detail: errorMessage,
+				summary: translate.instant('ERROR_HANDLER.TITLE'),
+				detail: translate.instant(`ERROR_HANDLER.${errorCode}`) ,
 				life: 3000
 			});
 

@@ -1,11 +1,30 @@
 {
-	"HEADER": {
+	"MAIN_LAYOUT": {
+		"LOADING_SYSTEM": "Sistema a Carregar...",
 		"SELECT_LANGUAGE": "Selecionar lingua",
 		"LANGUAGE_PT": "Português",
 		"LANGUAGE_EN": "Inglês"
 	},
-	"HOME": {
-		"TITLE": "Bem-vindo",
-		"SELECT_LANG": "Selecionar Idioma"
+	"LOGIN": {
+		"TITLE": "Autenticar",
+		"USERNAME": "Utilizador",
+		"PASSWORD": "Senha",
+		"LOGGING": "A entrar...",
+		"LOGIN": "Entrar",
+		"SUCCESS_SUMMARY": "Bem-vindo!",
+		"SUCCESS_DETAIL": "Login realizado com sucesso.",
+		"ERROR_SUMMARY": "Erro de Autenticação",
+		"ERROR_DETAIL": "Usuário ou senha inválidos. Tente novamente."
+	},
+	"LOGOUT": {
+		"TITLE": "Confirmação de Saída",
+		"MESSAGE": "Deseja sair do sistema?",
+		"ACCEPT_LABEL": "Sim",
+		"REJECT_LABEL": "Cancelar"
+	},
+	"ERROR_HANDLER": {
+		"TITLE": "Error!",
+		"DEFAULT_ERROR": "Ocorreu um erro, por favor, tente mais tarde.",
+		"InvalidCredentials": "Usuário ou senha inválidos. Tente novamente."
 	}
 }

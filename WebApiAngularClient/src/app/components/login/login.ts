@@ -5,11 +5,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { MessageService } from 'primeng/api';
 import { LoginRequest } from '../../api-generator/api-models';
+import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
 	selector: 'app-login',
 	standalone: true,
-	imports: [CommonModule, FormsModule],
+	imports: [CommonModule, FormsModule,
+		TranslateModule, TranslatePipe
+	],
 	templateUrl: './login.html',
 	styleUrl: './login.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush
@@ -19,16 +22,15 @@ export class LoginComponent {
 	private route = inject(ActivatedRoute);
 	private auth = inject(AuthService);
 	private messageService = inject(MessageService);
+	private translate = inject(TranslateService);
 
 	// signals for form data and loading state
 	username = signal('');
 	password = signal('');
-	errorMessage = signal('');
 	isLoading = signal(false);
 
 	onSubmit() {
 		this.isLoading.set(true);
-		this.errorMessage.set('');
 
 		const loginRequest: LoginRequest = {
 			username: this.username(),
@@ -40,8 +42,8 @@ export class LoginComponent {
 			next: () => {
 				this.messageService.add({
 					severity: 'success',
-					summary: 'Bem-vindo!',
-					detail: 'Login realizado com sucesso.',
+					summary: this.translate.instant('LOGIN.SUCCESS_SUMMARY'),
+					detail: this.translate.instant('LOGIN.SUCCESS_DETAIL'),
 					life: 3000
 				});
 
@@ -51,14 +53,13 @@ export class LoginComponent {
 			},
 			error: (err) => {
 				this.isLoading.set(false);
-				this.errorMessage.set('Credenciais inválidas.');
 
-				this.messageService.add({
-					severity: 'error',
-					summary: 'Erro de Autenticação',
-					detail: 'Usuário ou senha inválidos. Tente novamente.',
-					life: 3000
-				});
+				//this.messageService.add({
+				//	severity: 'error',
+				//	summary: this.translate.instant('LOGIN.ERROR_SUMMARY'),
+				//	detail: this.translate.instant('LOGIN.ERROR_DETAIL'),
+				//	life: 3000
+				//});
 			}
 		});
 	}

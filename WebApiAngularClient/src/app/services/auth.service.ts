@@ -4,10 +4,14 @@ import { Router } from '@angular/router';
 import { LoginRequest } from '../api-generator/api-models';
 import { ApiServiceBase } from './apiServiceBase';
 import { StorageKyes } from '../core/constants';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from './language.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService extends ApiServiceBase {
 	private router = inject(Router);
+	private translate = inject(TranslateService);
+	private languageService = inject(LanguageService);
 
 	// Using Signals for Angular 21 performance
 	currentUser = signal<any | null>(null);
@@ -89,6 +93,9 @@ export class AuthService extends ApiServiceBase {
 		// Put the language back so the Login Page looks correct
 		if (currentLang) {
 			localStorage.setItem(StorageKyes.UserLanguage, currentLang);
+		}
+		else {
+			this.translate.use(this.languageService.languageConfigDefault().language);
 		}
 	}
 }

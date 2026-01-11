@@ -1,11 +1,30 @@
 {
-	"HEADER": {
+	"MAIN_LAYOUT": {
+		"LOADING_SYSTEM": "Loading System...",
 		"SELECT_LANGUAGE": "Select a language",
 		"LANGUAGE_PT": "Portugues",
 		"LANGUAGE_EN": "English"
 	},
-	"HOME": {
-		"TITLE": "Welcome",
-		"SELECT_LANG": "Select Language"
+	"LOGIN": {
+		"TITLE": "Login",
+		"USERNAME": "Username",
+		"PASSWORD": "Password",
+		"LOGGING": "Loging...",
+		"LOGIN": "Login",
+		"SUCCESS_SUMMARY": "Welcome!",
+		"SUCCESS_DETAIL": "Login successful.",
+		"ERROR_SUMMARY": "Authentication Error",
+		"ERROR_DETAIL": "Invalid username or password. Please try again."
+	},
+	"LOGOUT": {
+		"TITLE": "Logout Confirmation",
+		"MESSAGE": "Do you want to leave the system?",
+		"ACCEPT_LABEL": "Yes",
+		"REJECT_LABEL": "Cancel"
+	},
+	"ERROR_HANDLER": {
+		"TITLE": "Error!",
+		"DEFAULT_ERROR": "An error occurred, please try again.",
+		"InvalidCredentials": "Invalid username or password. Please try again."
 	}
 }

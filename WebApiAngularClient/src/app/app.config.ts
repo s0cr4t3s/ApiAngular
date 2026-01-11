@@ -1,4 +1,4 @@
-import { ApplicationConfig, LOCALE_ID, provideAppInitializer, inject, InjectionToken, APP_INITIALIZER } from '@angular/core';
+import { ApplicationConfig, LOCALE_ID, provideAppInitializer, inject, InjectionToken } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { provideRouter } from '@angular/router';

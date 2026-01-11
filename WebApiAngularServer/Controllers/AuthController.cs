@@ -8,9 +8,12 @@ namespace WebApiAngular.Server.Controllers
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.IdentityModel.Tokens;
 
+	using WebApiAngular.Domain.Errors;
+	using WebApiAngular.Server.Helpers;
+
 	[ApiController]
 	[Route("api/[controller]")]
-	public class AuthController : ControllerBase
+	public class AuthController : HelperControllerBase
 	{
 		private readonly IConfiguration _config;
 
@@ -20,14 +23,16 @@ namespace WebApiAngular.Server.Controllers
 		}
 
 		[HttpPost("login")]
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(ResponseError[]))]
 		public IActionResult Login([FromBody] LoginRequest request)
 		{
-			Thread.Sleep(5000);
+			Thread.Sleep(2000);
 
 			// 1. Validate User (Replace this with your Database check)
 			if (request.Username != "admin" || request.Password != "password")
 			{
-				return Unauthorized("Invalid username or password");
+				return GetErrorActionResult(ErrorCode.InvalidCredentials);
 			}
 
 			// 2. Generate the JWT
@@ -48,7 +53,7 @@ namespace WebApiAngular.Server.Controllers
 
 			Response.Cookies.Append("AuthToken", token, cookieOptions);
 
-			return Ok(new { message = "Login successful" });
+			return Ok();
 		}
 
 		private string GenerateToken(string username)
@@ -83,7 +88,7 @@ namespace WebApiAngular.Server.Controllers
 				SameSite = SameSiteMode.Lax
 			});
 
-			return Ok(new { message = "Logged out successfully" });
+			return Ok();
 		}
 
 		[Authorize]

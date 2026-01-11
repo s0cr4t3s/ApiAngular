@@ -3,6 +3,8 @@ namespace WebApiAngular.Server.Controllers
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
 
+	using WebApiAngular.Domain.Errors;
+
 	[Authorize]
 	[ApiController]
 	[Route("api/[controller]")]
@@ -17,7 +19,7 @@ namespace WebApiAngular.Server.Controllers
 		[HttpGet]
 		[EndpointSummary("Get the weather xpto.")]
 		[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(WeatherForecast[]))]
-		[ProducesResponseType(StatusCodes.Status400BadRequest)]
+		[ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ResponseError[]))]
 		public IActionResult Get([FromQuery] string? local = null)
 		{
 			//Thread.Sleep(2000);

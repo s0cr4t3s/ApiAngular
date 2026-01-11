@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Domain/">
+    <Project Path="src/WebApiAngular.Domain/WebApiAngular.Domain.csproj" Id="369482d1-ffe4-4cdd-94b4-4a9de01f241c" />
+  </Folder>
   <Folder Name="/SolutionItems/">
     <File Path=".editorconfig" />
     <File Path=".gitattributes" />

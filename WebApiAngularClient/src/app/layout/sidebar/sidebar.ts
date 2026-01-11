@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MenuModule } from 'primeng/menu';
-import { NavService } from '../services/layout.service';
+import { LayoutService } from '../services/layout.service';
 import { AvatarModule } from 'primeng/avatar';
 
 @Component({
@@ -10,12 +10,12 @@ import { AvatarModule } from 'primeng/avatar';
 	templateUrl: './sidebar.html'
 })
 export class SidebarComponent implements OnInit {
-	public navService = inject(NavService);
+	public layoutService = inject(LayoutService);
 
 	ngOnInit() {
 		// Only load if the menu is empty
-		if (this.navService.menuItems().length === 0) {
-			this.navService.loadMenu();
+		if (this.layoutService.menuItems().length === 0) {
+			this.layoutService.loadMenu();
 		}
 	}
 }

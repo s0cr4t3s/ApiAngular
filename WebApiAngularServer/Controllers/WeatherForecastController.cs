@@ -20,7 +20,7 @@ namespace WebApiAngular.Server.Controllers
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		public IActionResult Get([FromQuery] string? local = null)
 		{
-			Thread.Sleep(2000);
+			//Thread.Sleep(2000);
 
 			var username = User.Identity?.Name;
 

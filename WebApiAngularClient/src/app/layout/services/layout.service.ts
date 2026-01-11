@@ -5,12 +5,13 @@ import { AuthService } from '../../services/auth.service';
 @Injectable({
 	providedIn: 'root'
 })
-export class NavService {
+export class LayoutService {
 	public auth = inject(AuthService);
 	private confirmationService = inject(ConfirmationService);
 	// Signal to hold our menu structure
 	readonly menuItems = signal<MenuItem[]>([]);
 	readonly userMenuItems = signal<MenuItem[]>([]);
+	readonly languageConfigItems = signal<LanguageConfig[]>([]);
 
 	constructor() { }
 
@@ -48,8 +49,25 @@ export class NavService {
 		this.userMenuItems.set(mockUserMenu);
 	}
 
-	onLogout() {
+	loadLanguageConfig() {
+		const langConfig: LanguageConfig[] = [
+			{ name: 'HEADER.LANGUAGE_PT', code: 'PT', language: 'pt' },
+			{ name: 'HEADER.LANGUAGE_EN', code: 'GB', language: 'en' }
+		];
 
+		this.languageConfigItems.set(langConfig);
+	}
+
+	languageConfigDefault(): LanguageConfig {
+		if (this.languageConfigItems().length === 0) {
+			this.loadLanguageConfig();
+		}
+
+		return this.languageConfigItems().find(c => c.language === 'pt') || this.languageConfigItems()[0];
+
+	}
+
+	onLogout() {
 		this.confirmationService.confirm({
 			message: 'Deseja realmente sair do sistema?',
 			header: 'Confirmação de Saída',
@@ -61,4 +79,10 @@ export class NavService {
 			}
 		});
 	}
+}
+
+export interface LanguageConfig {
+	name: string;
+	code: string;
+	language: string;
 }

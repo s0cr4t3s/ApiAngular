@@ -5,6 +5,30 @@
 
 		<div class="h-4rem flex align-items-center px-2 surface-border white-space-nowrap">
 			<p-button icon="pi pi-bars" [text]="true" (onClick)="toggleMenu()" styleClass="bars-sidebar-toggle p-button-secondary mr-2"></p-button>
+
+			<p-select [options]="layoutService.languageConfigItems()" [(ngModel)]="selectedlanguage" optionValue="code" [placeholder]="'HEADER.SELECT_LANGUAGE' | translate" (onChange)="onLanguageChange($event.value)" class="language-select w-full">
+				<ng-template #selectedItem let-selectedOption>
+					@if (selectedOption) {
+					<div class="flex items-center gap-2">
+						<img src="flags/flag_placeholder.png"
+							 [class]="'flag flag-' + selectedOption.code.toLowerCase()"
+							 style="width: 18px" />
+						<div>{{ selectedOption.name | translate }}</div>
+					</div>
+					}
+				</ng-template>
+				<ng-template let-country #item>
+					<div class="flex items-center gap-2">
+						<img src="flags/flag_placeholder.png"
+							 [class]="'flag flag-' + country.code.toLowerCase()"
+							 style="width: 18px" />
+						<div>{{ country.name | translate }}</div>
+					</div>
+				</ng-template>
+				<ng-template #dropdownicon>
+					<i class="pi pi-map"></i>
+				</ng-template>
+			</p-select>
 		</div>
 
 		<div class="flex-grow-1 overflow-y-auto w-15rem">
@@ -43,9 +67,7 @@
 						<span class="text-xs text-600 mt-1">Webmaster</span>
 					</div>
 				</div>
-				<p-menu #userMenu [model]="navService.userMenuItems()" [popup]="true"></p-menu>
-				<button (click)="changeLanguage('pt')">{{ 'HEADER.LANGUAGE_PT' | translate }}</button>
-				<button (click)="changeLanguage('en')">{{ 'HEADER.LANGUAGE_EN' | translate }}</button>
+				<p-menu #userMenu [model]="layoutService.userMenuItems()" [popup]="true"></p-menu>
 			</div>
 		</header>
 

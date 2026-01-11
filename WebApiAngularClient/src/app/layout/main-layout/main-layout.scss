@@ -45,6 +45,34 @@ aside {
 	/* Or target the specific PrimeNG variable directly */
 	--p-menu-item-icon-focus-color: #ffffff;
 
+	.p-select {
+		background-color: var(--p-primary-950);
+		border-color: var(--p-primary-900);
+
+		.items-center {
+			color: var(--p-surface-0);
+		}
+
+		::ng-deep {
+			.p-component {
+				background-color: var(--p-primary-950) !important;
+
+				&:hover, &.p-focus {
+					background-color: var(--p-primary-900);
+					color: #ffffff !important;
+				}
+			}
+
+			.p-select-overlay {
+				background-color: var(--p-primary-950) !important;
+
+				.p-select-option-selected, .p-focus {
+					background-color: var(--p-primary-900);
+				}
+			}
+		}
+	}
+
 	.animate-fadein {
 		animation: fadeIn 0.3s;
 	}
@@ -60,6 +88,7 @@ aside {
 	}
 
 	::ng-deep {
+
 		.bars-sidebar-toggle {
 			width: 3rem;
 			height: 3rem;
@@ -84,6 +113,7 @@ aside {
 
 		.p-menu-submenu-label {
 			color: #ffffff !important;
+			font-size: 20px;
 		}
 
 		.p-menu-item {
@@ -107,6 +137,7 @@ aside {
 
 			.p-menu-item-label {
 				font-weight: 100;
+				font-size: 20px;
 			}
 
 			&:hover, &.p-focus {

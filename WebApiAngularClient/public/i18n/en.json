@@ -1,5 +1,6 @@
 {
 	"HEADER": {
+		"SELECT_LANGUAGE": "Select a language",
 		"LANGUAGE_PT": "Portugues",
 		"LANGUAGE_EN": "English"
 	},

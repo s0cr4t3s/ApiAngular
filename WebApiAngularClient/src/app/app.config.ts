@@ -43,7 +43,7 @@ export const appConfig: ApplicationConfig = {
 			])
 		),
 		provideTranslateService({
-			defaultLanguage: 'pt',
+			fallbackLang: 'pt',
 			lang: savedLang,
 			loader: provideTranslateHttpLoader({
 				prefix: './i18n/', // Path in your 'public' folder [cite: 2025-10-10]

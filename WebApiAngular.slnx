@@ -2,6 +2,13 @@
   <Folder Name="/Domain/">
     <Project Path="src/WebApiAngular.Domain/WebApiAngular.Domain.csproj" Id="369482d1-ffe4-4cdd-94b4-4a9de01f241c" />
   </Folder>
+  <Folder Name="/Infrastructure/">
+    <Project Path="database/WebApiAngular.Database.Old/WebApiAngular.Database.Old.sqlproj" Id="65a139f1-1d62-43d4-8ec7-ad1090643128">
+      <Build />
+      <Deploy />
+    </Project>
+    <Project Path="database/WebApiAngular.Database/WebApiAngular.Database.csproj" Id="3197dd90-4fcc-43e0-a39e-d8225a6ca551" />
+  </Folder>
   <Folder Name="/SolutionItems/">
     <File Path=".editorconfig" />
     <File Path=".gitattributes" />

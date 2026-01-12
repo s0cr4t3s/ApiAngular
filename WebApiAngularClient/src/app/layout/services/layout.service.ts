@@ -1,13 +1,15 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { ConfirmationService, MenuItem } from 'primeng/api';
 import { AuthService } from '../../services/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class LayoutService {
-	public auth = inject(AuthService);
 	private confirmationService = inject(ConfirmationService);
+	private translate = inject(TranslateService);
+	public auth = inject(AuthService);
 	// Signal to hold our menu structure
 	readonly menuItems = signal<MenuItem[]>([]);
 	readonly userMenuItems = signal<MenuItem[]>([]);
@@ -51,8 +53,8 @@ export class LayoutService {
 
 	loadLanguageConfig() {
 		const langConfig: LanguageConfig[] = [
-			{ name: 'HEADER.LANGUAGE_PT', code: 'PT', language: 'pt' },
-			{ name: 'HEADER.LANGUAGE_EN', code: 'GB', language: 'en' }
+			{ name: 'MAIN_LAYOUT.LANGUAGE_PT', code: 'PT', language: 'pt' },
+			{ name: 'MAIN_LAYOUT.LANGUAGE_EN', code: 'GB', language: 'en' }
 		];
 
 		this.languageConfigItems.set(langConfig);
@@ -69,11 +71,11 @@ export class LayoutService {
 
 	onLogout() {
 		this.confirmationService.confirm({
-			message: 'Deseja realmente sair do sistema?',
-			header: 'Confirmação de Saída',
+			header: this.translate.instant('LOGOUT.TITLE'),
+			message: this.translate.instant('LOGOUT.MESSAGE'),
 			icon: 'pi pi-exclamation-triangle',
-			acceptLabel: 'Sim, sair',
-			rejectLabel: 'Cancelar',
+			acceptLabel: this.translate.instant('LOGOUT.ACCEPT_LABEL'),
+			rejectLabel: this.translate.instant('LOGOUT.REJECT_LABEL'),
 			accept: () => {
 				this.auth.logout(); // Chama o método que discutimos antes
 			}

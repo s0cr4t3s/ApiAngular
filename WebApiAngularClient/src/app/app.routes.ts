@@ -1,16 +1,18 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login';
 import { authGuard } from './guards/auth.guard';
-import { MainLayoutComponent } from './layout/main-layout/main-layout';
 
 export const routes: Routes = [
 	// Public Routes
-	{ path: 'login', component: LoginComponent },
+	{
+		path: 'login',
+		// DO NOT import at the top. Load it here:
+		loadComponent: () => import('./components/login/login').then(m => m.LoginComponent)
+	},
 
 	// Private Routes (Inside the Main Layout)
 	{
 		path: '',
-		component: MainLayoutComponent,
+		loadComponent: () => import('./layout/main-layout/main-layout').then(m => m.MainLayoutComponent),
 		canActivate: [authGuard],
 		children: [
 			{

@@ -6,11 +6,15 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { LoadingService } from './services/loading.service';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ENVIRONMENT_CONFIG } from './app.config';
+import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
 
 @Component({
 	selector: 'app-root',
 	standalone: true,
-	imports: [RouterOutlet, ToastModule, ConfirmDialogModule, ProgressBarModule], // Importante para navegação
+	imports: [RouterOutlet, ToastModule, ConfirmDialogModule, ProgressBarModule,
+		TranslateModule,
+		TranslatePipe
+	], // Importante para navegação
 	templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {

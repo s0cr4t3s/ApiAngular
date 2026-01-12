@@ -5,7 +5,7 @@ namespace WebApiAngular.Domain.Errors
 		public static readonly ErrorCode RandomError = new(nameof(RandomError), "An error occur.", StatusCodeEnum.Problem);
 		public static readonly ErrorCode RandomBadRequest = new(nameof(RandomBadRequest), "Bad request, error not detected.", StatusCodeEnum.BadRequest);
 
-		public static readonly ErrorCode InvalidCredentials = new(nameof(InvalidCredentials), "Invalid username or password.", StatusCodeEnum.Unauthorized);
+		public static readonly ErrorCode InvalidCredentials = new(nameof(InvalidCredentials), "Invalid username or password.", StatusCodeEnum.Unauthorized, "aaaa");
 		public static readonly ErrorCode UnauthorizedUser = new(nameof(UnauthorizedUser), "The user is unauthorized for this action.", StatusCodeEnum.Unauthorized);
 
 
